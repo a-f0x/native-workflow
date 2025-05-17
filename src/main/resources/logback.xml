@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="json" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <pattern>
+                    <pattern>
+                        {
+                        "trace_id":"%X{traceId:-},%X{spanId:-}"
+                        }
+                    </pattern>
+                </pattern>
+                <mdc/>
+                <timestamp/>
+                <context/>
+                <version/>
+                <logLevel/>
+                <loggerName/>
+                <message/>
+                <stackTrace/>
+                <threadName/>
+                <logstashMarkers/>
+                <arguments/>
+                <throwableClassName>
+                    <fieldName>exception</fieldName>
+                    <useSimpleClassName>false</useSimpleClassName>
+                </throwableClassName>
+            </providers>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="json"/>
+    </root>
+</configuration>
